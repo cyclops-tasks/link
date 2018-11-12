@@ -1,6 +1,6 @@
 {
   "name": "link-tasks",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "dist/link.js",
   "description": "Tasks to link node_modules",
   "keywords": [
