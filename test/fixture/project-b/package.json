@@ -1,0 +1,10 @@
+{
+  "name": "project-b",
+  "version": "0.0.1",
+  "cyclops": {
+    "link-tasks": {}
+  },
+  "dependencies": {
+    "project-a": "0.0.1"
+  }
+}
