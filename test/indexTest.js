@@ -51,46 +51,53 @@ test("link", async () => {
 
   await run()
 
-  expect(args).toEqual([
-    {
-      dest: `${__dirname}/fixture/project-a/node_modules/project-a/bin`,
-      ensureSymlink: true,
-      src: `${__dirname}/fixture/project-a/bin`,
-    },
-    {
-      dest: `${__dirname}/fixture/project-b/node_modules/project-a/bin`,
-      ensureSymlink: true,
-      src: `${__dirname}/fixture/project-a/bin`,
-    },
-    {
-      dest: `${__dirname}/fixture/project-a/node_modules/project-a/dist`,
-      ensureSymlink: true,
-      src: `${__dirname}/fixture/project-a/dist`,
-    },
-    {
-      dest: `${__dirname}/fixture/project-b/node_modules/project-a/dist`,
-      ensureSymlink: true,
-      src: `${__dirname}/fixture/project-a/dist`,
-    },
-    {
-      dest: `${__dirname}/fixture/project-a/node_modules/project-b/bin`,
-      ensureSymlink: true,
-      src: `${__dirname}/fixture/project-b/bin`,
-    },
-    {
-      dest: `${__dirname}/fixture/project-b/node_modules/project-b/bin`,
-      ensureSymlink: true,
-      src: `${__dirname}/fixture/project-b/bin`,
-    },
-    {
-      dest: `${__dirname}/fixture/project-a/node_modules/project-b/dist`,
-      ensureSymlink: true,
-      src: `${__dirname}/fixture/project-b/dist`,
-    },
-    {
-      dest: `${__dirname}/fixture/project-b/node_modules/project-b/dist`,
-      ensureSymlink: true,
-      src: `${__dirname}/fixture/project-b/dist`,
-    },
-  ])
+  expect(args.length).toBe(8)
+
+  expect(args).toContainEqual({
+    dest: `${__dirname}/fixture/project-a/node_modules/project-a/bin`,
+    ensureSymlink: true,
+    src: `${__dirname}/fixture/project-a/bin`,
+  })
+
+  expect(args).toContainEqual({
+    dest: `${__dirname}/fixture/project-b/node_modules/project-a/bin`,
+    ensureSymlink: true,
+    src: `${__dirname}/fixture/project-a/bin`,
+  })
+
+  expect(args).toContainEqual({
+    dest: `${__dirname}/fixture/project-a/node_modules/project-a/dist`,
+    ensureSymlink: true,
+    src: `${__dirname}/fixture/project-a/dist`,
+  })
+
+  expect(args).toContainEqual({
+    dest: `${__dirname}/fixture/project-b/node_modules/project-a/dist`,
+    ensureSymlink: true,
+    src: `${__dirname}/fixture/project-a/dist`,
+  })
+
+  expect(args).toContainEqual({
+    dest: `${__dirname}/fixture/project-a/node_modules/project-b/bin`,
+    ensureSymlink: true,
+    src: `${__dirname}/fixture/project-b/bin`,
+  })
+
+  expect(args).toContainEqual({
+    dest: `${__dirname}/fixture/project-b/node_modules/project-b/bin`,
+    ensureSymlink: true,
+    src: `${__dirname}/fixture/project-b/bin`,
+  })
+
+  expect(args).toContainEqual({
+    dest: `${__dirname}/fixture/project-a/node_modules/project-b/dist`,
+    ensureSymlink: true,
+    src: `${__dirname}/fixture/project-b/dist`,
+  })
+
+  expect(args).toContainEqual({
+    dest: `${__dirname}/fixture/project-b/node_modules/project-b/dist`,
+    ensureSymlink: true,
+    src: `${__dirname}/fixture/project-b/dist`,
+  })
 })
