@@ -19,9 +19,9 @@
     "link-tasks": "./bin/link-tasks"
   },
   "cyclops": {
-    "link-tasks": {},
-    "starter-tasks": {},
-    "version-tasks": {}
+    "link": {},
+    "starter": {},
+    "version": {}
   },
   "dependencies": {
     "@babel/runtime": "7.1.2",

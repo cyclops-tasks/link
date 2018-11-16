@@ -2,7 +2,7 @@
   "name": "project-a",
   "version": "0.0.1",
   "cyclops": {
-    "link-tasks": {}
+    "link": { "test": true }
   },
   "dependencies": {
     "project-b": "0.0.1"
