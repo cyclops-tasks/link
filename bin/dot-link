@@ -1,19 +1,19 @@
 #!/usr/bin/env node
 
 const dotEvent = require("dot-event").default
+const dotLink = require("../dist/link").default
 const dotStore = require("dot-store").default
-const cyclops = require("cyclops").default
-const link = require("../dist/link").default
+const dotTask = require("dot-task").default
 
 const events = dotEvent()
 const store = dotStore(events)
 
-cyclops({ events, store })
+dotTask({ events, store })
 
 events
-  .cyclops({
-    argv: process.argv.slice(2),
-    composer: link,
+  .task({
+    arg: process.argv.slice(2),
+    composer: dotLink,
     op: "link",
     path: process.cwd(),
   })

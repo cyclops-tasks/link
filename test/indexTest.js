@@ -1,6 +1,6 @@
-import cyclops from "cyclops"
 import dotEvent from "dot-event"
 import dotStore from "dot-store"
+import dotTask from "dot-task"
 import link from "../dist/link"
 
 let events, store
@@ -9,7 +9,7 @@ beforeEach(async () => {
   events = dotEvent()
   store = dotStore(events)
 
-  cyclops({ events, store })
+  dotTask({ events, store })
 
   events.onAny({
     "before.fs": async options => {
@@ -33,8 +33,8 @@ beforeEach(async () => {
 })
 
 async function run() {
-  await events.cyclops({
-    argv: [],
+  await events.task({
+    arg: [],
     composer: link,
     op: "link",
     path: `${__dirname}/fixture`,
