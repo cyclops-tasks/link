@@ -1,6 +1,7 @@
 import dotEvent from "dot-event"
 import dotStore from "dot-store"
 import dotTask from "dot-task"
+
 import link from "../dist/link"
 
 let events, store
