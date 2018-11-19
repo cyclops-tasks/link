@@ -1,6 +1,6 @@
 import dotEvent from "dot-event"
-import dotStore from "dot-store"
-import dotTask from "dot-task"
+import dotStore from "@dot-event/store"
+import dotTask from "@dot-event/task"
 
 import link from "../dist/link"
 
@@ -8,7 +8,7 @@ let events, store
 
 beforeEach(async () => {
   events = dotEvent()
-  store = dotStore(events)
+  store = dotStore({ events })
 
   dotTask({ events, store })
 
@@ -35,7 +35,7 @@ beforeEach(async () => {
 
 async function run() {
   await events.task({
-    arg: [],
+    argv: [],
     composer: link,
     op: "link",
     path: `${__dirname}/fixture`,

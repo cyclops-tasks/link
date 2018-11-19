@@ -1,4 +1,4 @@
-# dot-link
+# @dot-event/link
 
 dot-event `node_module` linking operation
 
