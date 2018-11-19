@@ -9,12 +9,12 @@ const dotLink = require("../dist/link").default
 const events = dotEvent()
 const store = dotStore({ events })
 
+dotLink({ events, store })
 dotTask({ events, store })
 
 events
   .task({
     argv: process.argv.slice(2),
-    composer: dotLink,
     op: "link",
     path: process.cwd(),
   })
