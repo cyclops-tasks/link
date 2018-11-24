@@ -13,24 +13,15 @@ beforeEach(async () => {
   dotLink({ events, store })
   dotTask({ events, store })
 
+  const cancel = ({ event }) => (event.signal.cancel = true)
+
   events.onAny({
-    "before.fs": async options => {
-      const { action, event } = options
-
-      const cancel = [
-        "ensureSymlink",
-        "pathExists",
-        "remove",
-      ]
-
-      if (cancel.indexOf(action) > -1) {
-        event.signal.cancel = true
-      }
-
-      if (action === "pathExists") {
-        event.signal.returnValue = true
-      }
+    "before.fsEnsureSymlink": cancel,
+    "before.fsPathExists": ({ event }) => {
+      event.signal.cancel = true
+      event.signal.returnValue = true
     },
+    "before.fsRemove": cancel,
   })
 })
 
@@ -46,10 +37,8 @@ test("link", async () => {
   const args = []
 
   events.onAny({
-    "before.fs": ({ action, event }) => {
-      if (action === "ensureSymlink") {
-        args.push(event.args[0])
-      }
+    "before.fsEnsureSymlink": ({ event }) => {
+      args.push(event.args[0])
     },
   })
 
@@ -58,49 +47,41 @@ test("link", async () => {
   expect(args.length).toBe(8)
 
   expect(args).toContainEqual({
-    action: "ensureSymlink",
     dest: `${__dirname}/fixture/project-a/node_modules/project-a/bin`,
     src: `${__dirname}/fixture/project-a/bin`,
   })
 
   expect(args).toContainEqual({
-    action: "ensureSymlink",
     dest: `${__dirname}/fixture/project-b/node_modules/project-a/bin`,
     src: `${__dirname}/fixture/project-a/bin`,
   })
 
   expect(args).toContainEqual({
-    action: "ensureSymlink",
     dest: `${__dirname}/fixture/project-a/node_modules/project-a/dist`,
     src: `${__dirname}/fixture/project-a/dist`,
   })
 
   expect(args).toContainEqual({
-    action: "ensureSymlink",
     dest: `${__dirname}/fixture/project-b/node_modules/project-a/dist`,
     src: `${__dirname}/fixture/project-a/dist`,
   })
 
   expect(args).toContainEqual({
-    action: "ensureSymlink",
     dest: `${__dirname}/fixture/project-a/node_modules/project-b/bin`,
     src: `${__dirname}/fixture/project-b/bin`,
   })
 
   expect(args).toContainEqual({
-    action: "ensureSymlink",
     dest: `${__dirname}/fixture/project-b/node_modules/project-b/bin`,
     src: `${__dirname}/fixture/project-b/bin`,
   })
 
   expect(args).toContainEqual({
-    action: "ensureSymlink",
     dest: `${__dirname}/fixture/project-a/node_modules/project-b/dist`,
     src: `${__dirname}/fixture/project-b/dist`,
   })
 
   expect(args).toContainEqual({
-    action: "ensureSymlink",
     dest: `${__dirname}/fixture/project-b/node_modules/project-b/dist`,
     src: `${__dirname}/fixture/project-b/dist`,
   })
