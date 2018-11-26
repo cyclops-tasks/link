@@ -1,19 +1,22 @@
+// Packages
 import dotEvent from "dot-event"
-import dotStore from "@dot-event/store"
 import dotTask from "@dot-event/task"
 
-import dotLink from "../dist/link"
+// Helpers
+import dotLink from "../"
 
-let events, store
+// Constants
+const cancel = ({ event }) => (event.signal.cancel = true)
 
+// Variables
+let events
+
+// Tests
 beforeEach(async () => {
   events = dotEvent()
-  store = dotStore({ events })
 
-  dotLink({ events, store })
-  dotTask({ events, store })
-
-  const cancel = ({ event }) => (event.signal.cancel = true)
+  dotLink({ events })
+  dotTask({ events })
 
   events.onAny({
     "before.fsEnsureSymlink": cancel,
