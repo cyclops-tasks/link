@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@babel/runtime": "7.1.2",
-    "dot-event": "2.12.1",
+    "dot-event": "2.12.2",
     "@dot-event/fs": "1.11.2",
     "@dot-event/log": "0.12.0",
     "@dot-event/store": "6.0.1",
