@@ -1,6 +1,6 @@
 {
   "name": "@dot-event/link",
-  "version": "0.6.27",
+  "version": "0.6.28",
   "main": "dist/link.js",
   "description": "dot-event node_module linking operation",
   "keywords": [
