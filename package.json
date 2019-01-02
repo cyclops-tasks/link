@@ -1,6 +1,6 @@
 {
   "name": "@dot-event/link",
-  "version": "0.6.31",
+  "version": "0.6.32",
   "main": "dist/link.js",
   "description": "dot-event node_module linking operation",
   "keywords": [
@@ -27,11 +27,11 @@
   },
   "dependencies": {
     "@babel/runtime": "7.2.0",
-    "dot-event": "2.12.9",
-    "@dot-event/fs": "1.11.29",
-    "@dot-event/log": "0.13.6",
-    "@dot-event/store": "6.0.8",
-    "@dot-event/task": "1.11.27",
+    "dot-event": "2.12.10",
+    "@dot-event/fs": "1.11.30",
+    "@dot-event/log": "0.13.7",
+    "@dot-event/store": "6.0.9",
+    "@dot-event/task": "1.11.28",
     "fs-extra": "7.0.1"
   },
   "devDependencies": {
